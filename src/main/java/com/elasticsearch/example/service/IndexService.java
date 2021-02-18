@@ -6,7 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
 import org.springframework.data.elasticsearch.core.IndexOperations;
-import org.springframework.data.elasticsearch.core.mapping.IndexCoordinates;
 import org.springframework.stereotype.Service;
 
 /**
@@ -29,9 +28,8 @@ public class IndexService {
     public void createIndex() {
         try {
             IndexOperations indexOperations = elasticsearchRestTemplate.indexOps(UserInfo.class);
-            boolean b1 = indexOperations.create();
-            boolean b = indexOperations.putMapping();
-            log.info("是否创建成功：{},{}", b1,b);
+            boolean exists = indexOperations.exists();
+            log.info("是否创建成功：{}}",exists);
         }catch (Exception e){
             log.error("创建索引异常", e);
         }

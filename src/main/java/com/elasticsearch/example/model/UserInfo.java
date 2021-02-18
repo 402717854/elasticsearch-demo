@@ -43,7 +43,7 @@ import java.util.Date;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(indexName = "mydlq-user", shards = 3, replicas = 1)
+@Document(indexName = "mydlq-user", shards = 1, replicas = 0)
 public class UserInfo {
 
     @Id

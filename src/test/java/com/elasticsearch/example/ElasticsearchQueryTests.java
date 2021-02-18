@@ -38,27 +38,27 @@ public class ElasticsearchQueryTests {
     private ElasticsearchOperations elasticsearchOperations;
 
     @Test
-    void testCreateIndex() {
+    public void testCreateIndex() {
         indexService.createIndex();
     }
     @Test
-    void testDeleteIndex() {
+    public void testDeleteIndex() {
         indexService.deleteIndex();
     }
     @Test
-    void testAddDocument(){
+    public void testAddDocument(){
         docService.addDocument();
     }
     @Test
-    void testGetDocument(){
+    public void testGetDocument(){
         docService.getDocument(1L);
     }
     @Test
-    void testUpdateDocument(){
+    public void testUpdateDocument(){
         docService.updateDocument(2L);
     }
     @Test
-    void testDeleteDocument(){
+    public void testDeleteDocument(){
         docService.deleteDocument(3L);
     }
     /**

@@ -4,4 +4,4 @@ spring:
   elasticsearch:
     rest:
       username: my-elasticsearch
-      uris: http://192.168.1.123:9200
+      uris: http://192.168.66.7:9200
