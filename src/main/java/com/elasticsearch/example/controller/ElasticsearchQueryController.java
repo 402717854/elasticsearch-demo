@@ -3,6 +3,7 @@ package com.elasticsearch.example.controller;
 import com.elasticsearch.example.model.UserInfo;
 import com.elasticsearch.example.service.DocService;
 import com.elasticsearch.example.service.IndexService;
+import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.aggregations.AggregationBuilders;
 import org.elasticsearch.search.aggregations.Aggregations;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
+@Slf4j
 public class ElasticsearchQueryController {
     @Autowired
     private DocService docService;
@@ -65,13 +67,13 @@ public class ElasticsearchQueryController {
         // 构建查询条件
         NativeSearchQueryBuilder queryBuilder = new NativeSearchQueryBuilder();
         // 添加基本分词查询
-        queryBuilder.withQuery(QueryBuilders.matchQuery("remark", "西京"));
+        queryBuilder.withQuery(QueryBuilders.matchQuery("remark", "北京"));
         // 搜索，获取结果
         SearchHits<UserInfo> search = elasticsearchOperations.search(queryBuilder.build(), UserInfo.class);
         // 总条数
         long total = search.getTotalHits();
-        System.out.println("total = " + total);
-        search.forEach(item -> System.out.println("userInfo = " + item));
+        log.info("total = " + total);
+        search.forEach(item -> log.info("userInfo = " + item));
     }
     /**
      * 分页查询
