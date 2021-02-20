@@ -3,6 +3,7 @@ package com.elasticsearch.example.controller;
 import com.elasticsearch.example.model.UserInfo;
 import com.elasticsearch.example.service.DocService;
 import com.elasticsearch.example.service.IndexService;
+import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.aggregations.AggregationBuilders;
 import org.elasticsearch.search.aggregations.Aggregations;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
+@Slf4j
 public class ElasticsearchQueryController {
     @Autowired
     private DocService docService;
@@ -35,26 +37,32 @@ public class ElasticsearchQueryController {
 
     @GetMapping("/createIndex")
     public void testCreateIndex() {
+        log.info("创建索引");
         indexService.createIndex();
     }
     @GetMapping("/deleteIndex")
     public void testDeleteIndex() {
+        log.info("删除索引");
         indexService.deleteIndex();
     }
     @GetMapping("/addDocument")
     public void testAddDocument(){
+        log.info("创建文档");
         docService.addDocument();
     }
     @GetMapping("/getDocument")
     public void testGetDocument(){
+        log.info("获取某个文档");
         docService.getDocument(1L);
     }
     @GetMapping("/updateDocument")
     public void testUpdateDocument(){
+        log.info("修改某个文档");
         docService.updateDocument(2L);
     }
     @GetMapping("/deleteDocument")
     public void testDeleteDocument(){
+        log.info("删除某个文档");
         docService.deleteDocument(3L);
     }
     /**
