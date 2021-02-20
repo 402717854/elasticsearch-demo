@@ -73,13 +73,13 @@ public class ElasticsearchQueryController {
         // 构建查询条件
         NativeSearchQueryBuilder queryBuilder = new NativeSearchQueryBuilder();
         // 添加基本分词查询
-        queryBuilder.withQuery(QueryBuilders.matchQuery("remark", "西京"));
+        queryBuilder.withQuery(QueryBuilders.matchQuery("remark", "北京"));
         // 搜索，获取结果
         SearchHits<UserInfo> search = elasticsearchOperations.search(queryBuilder.build(), UserInfo.class);
         // 总条数
         long total = search.getTotalHits();
-        System.out.println("total = " + total);
-        search.forEach(item -> System.out.println("userInfo = " + item));
+        log.info("total = " + total);
+        search.forEach(item -> log.info("userInfo = " + item));
     }
     /**
      * 分页查询
